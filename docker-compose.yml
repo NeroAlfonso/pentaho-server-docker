@@ -1,14 +1,15 @@
 version: '3'
 services:
   pen-server:
+    network_mode: "host"
     image: pentaho-server:9.2
     container_name: pentaho-server
     restart: always
     ports:
       - "4900:8080"
     volumes:
-      - ${VOLUMES_DIR}/pentaho/server/9.2/data/hsqldb:/opt/pentaho/pentaho-server/data/hsqldb:rw #Schedule/Quartz/hibernate
-      - ${VOLUMES_DIR}/pentaho/server/9.2/data/jackrabbit-repository:/opt/pentaho/pentaho-server/pentaho-solutions/system/jackrabbit/repository:rw #login, bancos, JOB, TR
-      - ${VOLUMES_DIR}/pentaho/server/9.2/logs:/opt/pentaho/pentaho-server/tomcat/logs
+      - ${VOLUMES_DIR}/pentaho/server/data/hsqldb:/opt/pentaho/pentaho-server/data/hsqldb:rw #Schedule/Quartz/hibernate
+      - ${VOLUMES_DIR}/pentaho/server/data/jackrabbit-repository:/opt/pentaho/pentaho-server/pentaho-solutions/system/jackrabbit/repository:rw #login, bancos, JOB, TR
+      - ${VOLUMES_DIR}/pentaho/server/logs:/opt/pentaho/pentaho-server/tomcat/logs
     environment:
       - TZ=America/Caracas

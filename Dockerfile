@@ -1,3 +1,4 @@
+#docker build -t pentaho-server:9.2 .
 FROM openjdk:8
 
 MAINTAINER Luan luan.m.paschoal@gmail.com
